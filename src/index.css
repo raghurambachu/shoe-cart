@@ -1,7 +1,14 @@
 @import url("./normalize.css");
 
+:root{
+  --section-border: #CFCFCF;
+  --base-font:#5C5C5C;
+  --base-red: #F67071;
+}
+
 html{
   font-size: 10px;
   font-family: 'Poppins', sans-serif;
+  color: var(--base-font)
 }
 
