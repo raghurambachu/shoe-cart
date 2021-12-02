@@ -1,11 +1,13 @@
-const merchandiseData = [
+import { IProduct } from "./interfaces";
+
+const merchandiseData: IProduct[] = [
   {
     sku: "1000",
     feature: "High Speed Sneakers",
     name: "Balenciaga",
     images: [
       {
-        url: "https://cdn-images.farfetch-contents.com/16/11/50/14/16115014_30900316_1000.jpg",
+        url: "https://i.ibb.co/fpQN72Z/sneaker.jpg",
         alt: "balenciaga-image1",
       },
       {
@@ -44,7 +46,7 @@ const merchandiseData = [
     name: "Balenciaga",
     images: [
       {
-        url: "https://cdn-images.farfetch-contents.com/16/11/50/14/16115014_30900316_1000.jpg",
+        url: "https://i.ibb.co/fpQN72Z/sneaker.jpg",
         alt: "balenciaga-image1",
       },
       {
@@ -56,7 +58,7 @@ const merchandiseData = [
         alt: "balenciaga-image3",
       },
     ],
-    band: "orange",
+    band: "band-type1",
     price: 790,
     category: ["sneakers", "shoe-accessories"],
     availableSizes: [39, 40, 41, 42, 43],
@@ -83,7 +85,7 @@ const merchandiseData = [
     name: "Balenciaga",
     images: [
       {
-        url: "https://cdn-images.farfetch-contents.com/16/11/50/14/16115014_30900316_1000.jpg",
+        url: "https://i.ibb.co/fpQN72Z/sneaker.jpg",
         alt: "balenciaga-image1",
       },
       {
@@ -95,7 +97,7 @@ const merchandiseData = [
         alt: "balenciaga-image3",
       },
     ],
-    band: "orange",
+    band: "band-type1",
     price: 790,
     category: ["sneakers", "shoe-accessories"],
     availableSizes: [39, 40, 41, 42, 43],
@@ -122,7 +124,7 @@ const merchandiseData = [
     name: "Balenciaga",
     images: [
       {
-        url: "https://cdn-images.farfetch-contents.com/16/11/50/14/16115014_30900316_1000.jpg",
+        url: "https://i.ibb.co/fpQN72Z/sneaker.jpg",
         alt: "balenciaga-image1",
       },
       {
@@ -134,7 +136,7 @@ const merchandiseData = [
         alt: "balenciaga-image3",
       },
     ],
-    band: "orange",
+    band: "band-type1",
     price: 790,
     category: ["sneakers", "shoe-accessories"],
     availableSizes: [39, 40, 41, 42, 43],
@@ -161,7 +163,7 @@ const merchandiseData = [
     name: "Balenciaga",
     images: [
       {
-        url: "https://cdn-images.farfetch-contents.com/16/11/50/14/16115014_30900316_1000.jpg",
+        url: "https://i.ibb.co/fpQN72Z/sneaker.jpg",
         alt: "balenciaga-image1",
       },
       {
@@ -173,7 +175,7 @@ const merchandiseData = [
         alt: "balenciaga-image3",
       },
     ],
-    band: "orange",
+    band: "band-type1",
     price: 790,
     category: ["sneakers", "shoe-accessories"],
     availableSizes: [39, 40, 41, 42, 43],
@@ -200,7 +202,7 @@ const merchandiseData = [
     name: "Balenciaga",
     images: [
       {
-        url: "https://cdn-images.farfetch-contents.com/16/11/50/14/16115014_30900316_1000.jpg",
+        url: "https://i.ibb.co/fpQN72Z/sneaker.jpg",
         alt: "balenciaga-image1",
       },
       {
@@ -212,7 +214,7 @@ const merchandiseData = [
         alt: "balenciaga-image3",
       },
     ],
-    band: "orange",
+    band: "band-type1",
     price: 790,
     category: ["sneakers", "shoe-accessories"],
     availableSizes: [39, 40, 41, 42, 43],
@@ -239,7 +241,7 @@ const merchandiseData = [
     name: "Balenciaga",
     images: [
       {
-        url: "https://cdn-images.farfetch-contents.com/16/11/50/14/16115014_30900316_1000.jpg",
+        url: "https://i.ibb.co/fpQN72Z/sneaker.jpg",
         alt: "balenciaga-image1",
       },
       {
@@ -251,7 +253,7 @@ const merchandiseData = [
         alt: "balenciaga-image3",
       },
     ],
-    band: "orange",
+    band: "band-type1",
     price: 790,
     category: ["sneakers", "shoe-accessories"],
     availableSizes: [39, 40, 41, 42, 43],
@@ -278,7 +280,7 @@ const merchandiseData = [
     name: "Balenciaga",
     images: [
       {
-        url: "https://cdn-images.farfetch-contents.com/16/11/50/14/16115014_30900316_1000.jpg",
+        url: "https://i.ibb.co/fpQN72Z/sneaker.jpg",
         alt: "balenciaga-image1",
       },
       {
@@ -290,7 +292,7 @@ const merchandiseData = [
         alt: "balenciaga-image3",
       },
     ],
-    band: "orange",
+    band: "band-type1",
     price: 790,
     category: ["sneakers", "shoe-accessories"],
     availableSizes: [39, 40, 41, 42, 43],
@@ -317,7 +319,7 @@ const merchandiseData = [
     name: "Balenciaga",
     images: [
       {
-        url: "https://cdn-images.farfetch-contents.com/16/11/50/14/16115014_30900316_1000.jpg",
+        url: "https://i.ibb.co/fpQN72Z/sneaker.jpg",
         alt: "balenciaga-image1",
       },
       {
@@ -329,7 +331,7 @@ const merchandiseData = [
         alt: "balenciaga-image3",
       },
     ],
-    band: "orange",
+    band: "band-type1",
     price: 790,
     category: ["sneakers", "shoe-accessories"],
     availableSizes: [39, 40, 41, 42, 43],
@@ -356,7 +358,7 @@ const merchandiseData = [
     name: "Balenciaga",
     images: [
       {
-        url: "https://cdn-images.farfetch-contents.com/16/11/50/14/16115014_30900316_1000.jpg",
+        url: "https://i.ibb.co/fpQN72Z/sneaker.jpg",
         alt: "balenciaga-image1",
       },
       {
@@ -368,7 +370,7 @@ const merchandiseData = [
         alt: "balenciaga-image3",
       },
     ],
-    band: "orange",
+    band: "band-type1",
     price: 790,
     category: ["sneakers", "shoe-accessories"],
     availableSizes: [39, 40, 41, 42, 43],

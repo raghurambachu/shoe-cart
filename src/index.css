@@ -4,6 +4,13 @@
   --section-border: #e9e9e9;
   --base-font:#5C5C5C;
   --base-red: #F67071;
+  --base-grey: #c3c3c3;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box; 
+  -moz-box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 html{
@@ -12,3 +19,7 @@ html{
   color: var(--base-font)
 }
 
+.flex-align-center{
+  display:flex;
+  align-items: center;
+}
