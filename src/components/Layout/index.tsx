@@ -56,6 +56,15 @@ const Layout = () => {
       product.name.toLowerCase().includes(appState.search.toLowerCase())
     );
 
+    // Filter by category
+    filteredAllProducts = appState.selectedCategories.length
+      ? filteredAllProducts.filter((product) =>
+          product.category.some((cat) =>
+            appState.selectedCategories.includes(cat)
+          )
+        )
+      : filteredAllProducts;
+
     // Filter by sortBy(price and order -> only ascending)
     filteredAllProducts = filteredAllProducts
       .slice()
@@ -75,7 +84,7 @@ const Layout = () => {
   useEffect(() => {
     const filteredAllProducts = filterProducts(merchandiseData, appState);
     setAllProducts(filteredAllProducts);
-  }, [appState.sortBy, appState.search]);
+  }, [appState]);
 
   return (
     <LayoutWrapper>

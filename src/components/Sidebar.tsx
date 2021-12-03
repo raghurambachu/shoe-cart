@@ -13,7 +13,8 @@ const {
 
 const AccordionContent = styled.div`
   font-size: 1.4rem;
-  padding: 2.5rem ${sidebarPadding};
+  padding: 2.5rem ${sidebarPadding} 1rem;
+  border-bottom: 1px solid var(--section-border);
 `;
 
 const SidebarWrapper = styled.div``;

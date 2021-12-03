@@ -3,6 +3,7 @@ import { useState } from "react";
 
 const CheckboxWrapper = styled.div`
   display: inline-flex;
+  cursor: pointer;
   align-items: center;
   .checkbox-input {
     display: none;
@@ -40,7 +41,7 @@ const Checkbox = ({ id, label, value, onChange }: ICheckbox) => {
   }
 
   return (
-    <div style={{ marginBottom: "1rem" }}>
+    <div style={{ marginBottom: "1.3rem" }}>
       <CheckboxWrapper>
         <div className="checkbox">
           <input

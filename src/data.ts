@@ -60,7 +60,7 @@ const merchandiseData: IProduct[] = [
     ],
     band: "band-type1",
     price: 965,
-    category: ["sneakers", "shoe-accessories"],
+    category: ["flip-flops", "shoe-accessories"],
     availableSizes: [39, 40, 41, 42, 43],
     compositionsAvailable: [
       {
@@ -99,7 +99,7 @@ const merchandiseData: IProduct[] = [
     ],
     band: "band-type1",
     price: 295,
-    category: ["sneakers", "shoe-accessories"],
+    category: ["lace-up", "shoe-accessories"],
     availableSizes: [39, 40, 41, 42, 43],
     compositionsAvailable: [
       {
@@ -138,7 +138,7 @@ const merchandiseData: IProduct[] = [
     ],
     band: "band-type1",
     price: 110,
-    category: ["sneakers", "shoe-accessories"],
+    category: ["lace-up"],
     availableSizes: [39, 40, 41, 42, 43],
     compositionsAvailable: [
       {
@@ -177,7 +177,7 @@ const merchandiseData: IProduct[] = [
     ],
     band: "band-type1",
     price: 550,
-    category: ["sneakers", "shoe-accessories"],
+    category: ["lace-up"],
     availableSizes: [39, 40, 41, 42, 43],
     compositionsAvailable: [
       {
@@ -216,7 +216,7 @@ const merchandiseData: IProduct[] = [
     ],
     band: "band-type1",
     price: 440,
-    category: ["sneakers", "shoe-accessories"],
+    category: ["sneakers"],
     availableSizes: [39, 40, 41, 42, 43],
     compositionsAvailable: [
       {
@@ -294,7 +294,7 @@ const merchandiseData: IProduct[] = [
     ],
     band: "band-type1",
     price: 810,
-    category: ["sneakers", "shoe-accessories"],
+    category: ["sneakers", "shoe-accessories", "lace-up"],
     availableSizes: [39, 40, 41, 42, 43],
     compositionsAvailable: [
       {
@@ -333,7 +333,7 @@ const merchandiseData: IProduct[] = [
     ],
     band: "band-type1",
     price: 1000,
-    category: ["sneakers", "shoe-accessories"],
+    category: ["sneakers"],
     availableSizes: [39, 40, 41, 42, 43],
     compositionsAvailable: [
       {
@@ -372,7 +372,7 @@ const merchandiseData: IProduct[] = [
     ],
     band: "band-type1",
     price: 580,
-    category: ["sneakers", "shoe-accessories"],
+    category: ["flip-flops"],
     availableSizes: [39, 40, 41, 42, 43],
     compositionsAvailable: [
       {
