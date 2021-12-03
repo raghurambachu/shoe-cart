@@ -44,7 +44,7 @@ const LayoutWrapper = styled.div`
 const Layout = () => {
   const { appState } = useContext(AppContext);
   const {
-    dropdowns: { sortBy: sortByList },
+    list: { sortBy: sortByList },
   } = appConfig;
   const [allProducts, setAllProducts] = useState<IProduct[]>([]);
 

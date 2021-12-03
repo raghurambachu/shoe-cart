@@ -25,3 +25,8 @@ export interface IDropdownListItem {
   label: string;
   value: string;
 }
+
+export interface IOption {
+  label: string;
+  value: string;
+}

@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
-import { MouseEventHandler, useRef, useState } from "react";
-import { FaChevronUp } from "react-icons/fa";
+import { useRef, useState } from "react";
 import { appConfig } from "../appConfig";
 
 const {

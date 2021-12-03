@@ -2,8 +2,10 @@ import React, { createContext, Dispatch, useReducer } from "react";
 import { appConfig } from "../appConfig";
 
 const {
-  dropdowns: { sortBy: sortByList },
+  list: { sortBy: sortByList },
 } = appConfig;
+
+// Payload does require the property, just to keep it readable
 
 type TSetTitle = {
   type: "SET_SEARCH";
@@ -17,7 +19,14 @@ type TSetSortBy = {
   };
 };
 
-export type TAppReducerAction = TSetTitle | TSetSortBy;
+type TSetCategories = {
+  type: "SET_CATEGORIES";
+  payload: {
+    selectedCategories: string[];
+  };
+};
+
+export type TAppReducerAction = TSetTitle | TSetSortBy | TSetCategories;
 
 interface IAppContext {
   appState: IAppState;
@@ -27,7 +36,7 @@ interface IAppContext {
 export interface IAppState {
   search: string;
   selectedProduct: string; //For displaying product details on right sidebar(its sku)
-  selectedCategory: string[];
+  selectedCategories: string[];
   priceRange: [number, number];
   selectedSizes: number[];
   sortBy: string;
@@ -36,7 +45,7 @@ export interface IAppState {
 const initialAppState: IAppState = {
   search: "",
   selectedProduct: "",
-  selectedCategory: [],
+  selectedCategories: [],
   priceRange: [0, 0], //Todo: should be taken from appConfig
   selectedSizes: [38, 39], //Todo: should be taken from appConfig
   sortBy: sortByList[0].value, //Todo: should be taken form appConfig
@@ -54,6 +63,12 @@ function appReducer(state: IAppState, action: TAppReducerAction) {
       return {
         ...state,
         sortBy: action.payload.sortBy,
+      };
+    }
+    case "SET_CATEGORIES": {
+      return {
+        ...state,
+        selectedCategories: action.payload.selectedCategories,
       };
     }
 

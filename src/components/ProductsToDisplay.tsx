@@ -39,7 +39,7 @@ interface IProductsToDisplay {
 const ProductsToDisplay = ({ allProducts }: IProductsToDisplay) => {
   const { appState, appDispatch } = useContext(AppContext);
   const {
-    dropdowns: { sortBy: sortByList },
+    list: { sortBy: sortByList },
   } = appConfig;
 
   // Todo: move to appConfig
