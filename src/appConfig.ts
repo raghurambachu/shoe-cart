@@ -1,5 +1,6 @@
 const appConfig = {
   list: {
+    //same structure things are kept under list
     sortBy: [
       { label: "Price", value: "price" },
       { label: "Order", value: "order" },
@@ -11,6 +12,7 @@ const appConfig = {
       { label: "Shoe Accessories", value: "shoe-accessories" },
     ],
   },
+  availableSizes: [35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49],
   uiConfigs: {
     sidebarPadding: "3rem",
   },
