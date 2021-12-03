@@ -20,3 +20,8 @@ export interface IProduct {
   compositionsAvailable: IProductComposition[];
   description: string;
 }
+
+export interface IDropdownListItem {
+  label: string;
+  value: string;
+}

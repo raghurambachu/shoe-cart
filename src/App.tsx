@@ -1,7 +1,12 @@
 import Layout from "./components/Layout";
+import { AppContextProvider } from "./context/AppContext";
 
 function App() {
-  return <Layout />;
+  return (
+    <AppContextProvider>
+      <Layout />
+    </AppContextProvider>
+  );
 }
 
 export default App;
