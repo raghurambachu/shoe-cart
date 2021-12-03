@@ -100,7 +100,7 @@ const merchandiseData: IProduct[] = [
     band: "band-type1",
     price: 295,
     category: ["lace-up", "shoe-accessories"],
-    availableSizes: [39, 40, 41, 42, 43],
+    availableSizes: [39],
     compositionsAvailable: [
       {
         material: "Polyamide",
@@ -139,7 +139,7 @@ const merchandiseData: IProduct[] = [
     band: "band-type1",
     price: 110,
     category: ["lace-up"],
-    availableSizes: [39, 40, 41, 42, 43],
+    availableSizes: [39],
     compositionsAvailable: [
       {
         material: "Polyamide",
@@ -178,7 +178,7 @@ const merchandiseData: IProduct[] = [
     band: "band-type1",
     price: 550,
     category: ["lace-up"],
-    availableSizes: [39, 40, 41, 42, 43],
+    availableSizes: [40, 41],
     compositionsAvailable: [
       {
         material: "Polyamide",
@@ -256,7 +256,7 @@ const merchandiseData: IProduct[] = [
     band: "band-type1",
     price: 890,
     category: ["sneakers", "shoe-accessories"],
-    availableSizes: [39, 40, 41, 42, 43],
+    availableSizes: [45, 46, 47, 48, 49],
     compositionsAvailable: [
       {
         material: "Polyamide",
@@ -295,7 +295,7 @@ const merchandiseData: IProduct[] = [
     band: "band-type1",
     price: 810,
     category: ["sneakers", "shoe-accessories", "lace-up"],
-    availableSizes: [39, 40, 41, 42, 43],
+    availableSizes: [48, 49],
     compositionsAvailable: [
       {
         material: "Polyamide",
@@ -334,7 +334,7 @@ const merchandiseData: IProduct[] = [
     band: "band-type1",
     price: 1000,
     category: ["sneakers"],
-    availableSizes: [39, 40, 41, 42, 43],
+    availableSizes: [35, 36, 37],
     compositionsAvailable: [
       {
         material: "Polyamide",
@@ -373,7 +373,7 @@ const merchandiseData: IProduct[] = [
     band: "band-type1",
     price: 580,
     category: ["flip-flops"],
-    availableSizes: [39, 40, 41, 42, 43],
+    availableSizes: [37, 38],
     compositionsAvailable: [
       {
         material: "Polyamide",

@@ -65,6 +65,15 @@ const Layout = () => {
         )
       : filteredAllProducts;
 
+    // Filter by sizes
+    filteredAllProducts = appState.selectedSizes.length
+      ? filteredAllProducts.filter((product) =>
+          product.availableSizes.some((size) =>
+            appState.selectedSizes.includes(size)
+          )
+        )
+      : filteredAllProducts;
+
     // Filter by sortBy(price and order -> only ascending)
     filteredAllProducts = filteredAllProducts
       .slice()
