@@ -6,6 +6,7 @@ import { useContext, useEffect, useState } from "react";
 import { IProduct } from "../../interfaces";
 import { AppContext, IAppState } from "../../context/AppContext";
 import { appConfig } from "../../appConfig";
+import Sidebar from "../Sidebar";
 
 const LayoutWrapper = styled.div`
   display: grid;
@@ -81,7 +82,9 @@ const Layout = () => {
       <header className="header">
         <Header />
       </header>
-      <aside className="left-sidebar"> </aside>
+      <aside className="left-sidebar">
+        <Sidebar />
+      </aside>
       <section className="scrollable">
         <ProductsToDisplay allProducts={allProducts} />
       </section>

@@ -8,6 +8,7 @@ const ProductWrapper = styled.div`
   border-radius: 2rem;
   margin-bottom: 3rem;
   width: 48%;
+  max-width: 34.6rem;
   .product-feature,.price-tag{
     color:var(--base-grey)
     font-weight: 500;

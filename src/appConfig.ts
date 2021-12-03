@@ -5,6 +5,9 @@ const appConfig = {
       { label: "Order", value: "order" },
     ],
   },
+  uiConfigs: {
+    sidebarPadding: "3rem",
+  },
 };
 
 export { appConfig };
