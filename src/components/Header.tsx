@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { FiSearch } from "react-icons/fi";
+import { useContext } from "react";
+import { AppContext } from "../context/AppContext";
 
 const HeaderWrapper = styled.div`
   display: flex;
@@ -68,12 +70,22 @@ const UserIcon = styled.div`
 `;
 
 const Header = () => {
+  const { appState, appDispatch } = useContext(AppContext);
   return (
     <HeaderWrapper>
       <BrandTitle>Shoe.</BrandTitle>
       <SearchWrapper>
         <FiSearch className="search-icon" />
-        <SearchBar placeholder="Search your sneakers" />
+        <SearchBar
+          value={appState.search}
+          onChange={(e) =>
+            appDispatch({
+              type: "SET_SEARCH",
+              payload: { search: e.target.value },
+            })
+          }
+          placeholder="Search your sneakers"
+        />
       </SearchWrapper>
       <UserArea>
         <IoNotificationsOutline className="notification-icon" />

@@ -17,14 +17,14 @@ type TSetSortBy = {
   };
 };
 
-type TAppReducerAction = TSetTitle | TSetSortBy;
+export type TAppReducerAction = TSetTitle | TSetSortBy;
 
 interface IAppContext {
   appState: IAppState;
   appDispatch: Dispatch<TAppReducerAction>;
 }
 
-interface IAppState {
+export interface IAppState {
   search: string;
   selectedProduct: string; //For displaying product details on right sidebar(its sku)
   selectedCategory: string[];

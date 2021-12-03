@@ -1,7 +1,11 @@
 import styled from "@emotion/styled";
 import { useContext } from "react";
 import { appConfig } from "../appConfig";
-import { AppContext } from "../context/AppContext";
+import {
+  AppContext,
+  IAppState,
+  TAppReducerAction,
+} from "../context/AppContext";
 import { IProduct } from "../interfaces";
 import Product from "./Product";
 import SortDropdown from "./SortDropdown";
@@ -60,7 +64,7 @@ const ProductsToDisplay = ({ allProducts }: IProductsToDisplay) => {
       </SectionNav>
       <AllProductsWrapper>
         {allProducts.map((product) => {
-          return <Product product={product} />;
+          return <Product key={product.sku} product={product} />;
         })}
       </AllProductsWrapper>
     </ProductsToDisplayWrapper>
