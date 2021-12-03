@@ -26,7 +26,18 @@ type TSetCategories = {
   };
 };
 
-export type TAppReducerAction = TSetTitle | TSetSortBy | TSetCategories;
+type TSetSize = {
+  type: "SET_SIZE";
+  payload: {
+    selectedSizes: number[];
+  };
+};
+
+export type TAppReducerAction =
+  | TSetTitle
+  | TSetSortBy
+  | TSetCategories
+  | TSetSize;
 
 interface IAppContext {
   appState: IAppState;
@@ -47,7 +58,7 @@ const initialAppState: IAppState = {
   selectedProduct: "",
   selectedCategories: [],
   priceRange: [0, 0], //Todo: should be taken from appConfig
-  selectedSizes: [38, 39], //Todo: should be taken from appConfig
+  selectedSizes: [], //Todo: should be taken from appConfig
   sortBy: sortByList[0].value, //Todo: should be taken form appConfig
 };
 
@@ -69,6 +80,12 @@ function appReducer(state: IAppState, action: TAppReducerAction) {
       return {
         ...state,
         selectedCategories: action.payload.selectedCategories,
+      };
+    }
+    case "SET_SIZE": {
+      return {
+        ...state,
+        selectedSizes: action.payload.selectedSizes,
       };
     }
 
