@@ -25,6 +25,9 @@ const Categories = styled.div`
   .accordion-title {
     font-weight: 500;
   }
+  .accordion:hover {
+    background-color: var(--hover-grey);
+  }
 `;
 
 const Sidebar = () => {

@@ -7,6 +7,7 @@ import { IProduct } from "../../interfaces";
 import { AppContext, IAppState } from "../../context/AppContext";
 import { appConfig } from "../../appConfig";
 import Sidebar from "../Sidebar";
+import ProductInfo from "../ProductInfo";
 
 const LayoutWrapper = styled.div`
   display: grid;
@@ -47,6 +48,7 @@ const Layout = () => {
     list: { sortBy: sortByList },
   } = appConfig;
   const [allProducts, setAllProducts] = useState<IProduct[]>([]);
+  const [product, setProduct] = useState<IProduct>({} as IProduct);
 
   function filterProducts(allProducts: IProduct[], appState: IAppState) {
     let filteredAllProducts: IProduct[];
@@ -95,6 +97,22 @@ const Layout = () => {
     setAllProducts(filteredAllProducts);
   }, [appState]);
 
+  useEffect(() => {
+    const productVal =
+      appState.selectedProduct &&
+      !!allProducts.find(
+        (productItem) => productItem.sku === appState.selectedProduct
+      )
+        ? (allProducts.find(
+            (productItem) => productItem.sku === appState.selectedProduct
+          ) as IProduct)
+        : allProducts.length
+        ? allProducts[0]
+        : ({} as IProduct);
+
+    setProduct(productVal);
+  }, [appState.selectedProduct, allProducts]);
+  console.log(product);
   return (
     <LayoutWrapper>
       <header className="header">
@@ -106,7 +124,9 @@ const Layout = () => {
       <section className="scrollable">
         <ProductsToDisplay allProducts={allProducts} />
       </section>
-      <aside className="right-sidebar"></aside>
+      <aside className="right-sidebar">
+        {Object.keys(product || {}).length && <ProductInfo product={product} />}
+      </aside>
     </LayoutWrapper>
   );
 };

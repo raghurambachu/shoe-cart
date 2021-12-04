@@ -33,11 +33,20 @@ type TSetSize = {
   };
 };
 
+// It's basically sku being set
+type TSetProduct = {
+  type: "SET_PRODUCT";
+  payload: {
+    selectedProduct: string;
+  };
+};
+
 export type TAppReducerAction =
   | TSetTitle
   | TSetSortBy
   | TSetCategories
-  | TSetSize;
+  | TSetSize
+  | TSetProduct;
 
 interface IAppContext {
   appState: IAppState;
@@ -86,6 +95,12 @@ function appReducer(state: IAppState, action: TAppReducerAction) {
       return {
         ...state,
         selectedSizes: action.payload.selectedSizes,
+      };
+    }
+    case "SET_PRODUCT": {
+      return {
+        ...state,
+        selectedProduct: action.payload.selectedProduct,
       };
     }
 
