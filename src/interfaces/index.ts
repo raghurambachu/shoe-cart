@@ -36,4 +36,5 @@ export interface ICollectCountOfProductsForEachDataPointFunc {
   max: number;
   xUnit?: number;
   merchandiseData: IProduct[];
+  selectedRange: number[];
 }

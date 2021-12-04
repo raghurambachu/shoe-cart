@@ -68,9 +68,11 @@ export function collectCountOfProductsForEachDataPoint({
   max,
   xUnit = 50,
   merchandiseData,
+  selectedRange,
 }: ICollectCountOfProductsForEachDataPointFunc) {
   // collect data points on x-axis, 1 unit is $50; So possible points on x-axis is max - min / xUnit
   const countOfUnits = (max - min) / xUnit;
+  const [selectedMin, selectedMax] = selectedRange;
   const countOfProductsForEachUnit = Array.from({ length: countOfUnits })
     .fill(0)
     .map((val, index) => {
@@ -78,7 +80,11 @@ export function collectCountOfProductsForEachDataPoint({
       const maxPriceVal = (index + 1) * xUnit;
       // minPriceVal and MaxPriceVal refers to the price range upperLimits for particular x-axis unit
       return merchandiseData.filter(
-        (product) => product.price > minPriceVal && product.price <= maxPriceVal
+        (product) =>
+          product.price > minPriceVal &&
+          product.price <= maxPriceVal &&
+          product.price > selectedMin &&
+          product.price <= selectedMax
       ).length;
     });
 

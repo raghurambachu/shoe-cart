@@ -26,6 +26,12 @@ const Bar = styled.div`
 
   z-index: 1;
   bottom: 0;
+`;
+
+/* Ruler kind of thing
+     ${({ height }) =>
+    height  &&
+    `
   &::before {
     content: "";
     background: black;
@@ -35,7 +41,8 @@ const Bar = styled.div`
     bottom: 0;
     position: absolute;
   }
-`;
+  `}
+*/
 
 interface IHistogramChart {
   appState: IAppState;
@@ -44,28 +51,42 @@ interface IHistogramChart {
 
 const HistogramChart = ({ appState, merchandiseData }: IHistogramChart) => {
   const {
-    range: { initial },
+    range: { initial, selected },
   } = appState;
 
   const chartWrapperRef = useRef<HTMLDivElement>(null);
   const xUnit = 50; //needs to be taken from appConfig;
   const totalUnits = (initial[1] - initial[0]) / xUnit;
 
-  const getDataPointsAndRespectiveProductCount =
-    collectCountOfProductsForEachDataPoint({
-      min: initial[0],
-      max: initial[1],
-      merchandiseData,
-      xUnit,
-    });
-
   // height in number(px value) depicting height of each
   const [heightForEachUnit, setHeightForEachUnit] = useState<number[]>([]);
+  const [maxCount, setMaxCount] = useState(0);
   const [totalWidth, setTotalWidth] = useState(0);
 
-  const maxCount = Math.max(...getDataPointsAndRespectiveProductCount);
+  useEffect(() => {
+    const getDataPointsAndRespectiveProductCount =
+      collectCountOfProductsForEachDataPoint({
+        min: initial[0],
+        max: initial[1],
+        merchandiseData,
+        xUnit,
+        selectedRange: selected,
+      });
+    const maxCount = Math.max(...getDataPointsAndRespectiveProductCount);
+    setMaxCount(maxCount);
+    // This has been done to keep original MaxCount -> on changing selected range this was changing as per the new dataset, but this needs to be based on original dataset, so controlled in mount
+  }, []);
 
   useEffect(() => {
+    const getDataPointsAndRespectiveProductCount =
+      collectCountOfProductsForEachDataPoint({
+        min: initial[0],
+        max: initial[1],
+        merchandiseData,
+        xUnit,
+        selectedRange: selected,
+      });
+
     const chartCoords: DOMRect | undefined =
       chartWrapperRef?.current?.getBoundingClientRect();
 
@@ -78,7 +99,7 @@ const HistogramChart = ({ appState, merchandiseData }: IHistogramChart) => {
       );
     setTotalWidth(chartCoords?.width || 0);
     setHeightForEachUnit(barChartHeightsForEachUnit);
-  }, []);
+  }, [appState.range.selected, maxCount]); //to ensure on changing the selected range the other parts where the range doesnt exists to 0 height bars.
 
   return (
     <HistogramChartWrapper ref={chartWrapperRef}>
