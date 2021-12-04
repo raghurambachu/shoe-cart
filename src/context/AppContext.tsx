@@ -70,7 +70,6 @@ export interface IAppState {
   search: string;
   selectedProduct: string; //For displaying product details on right sidebar(its sku)
   selectedCategories: string[];
-  priceRange: [number, number];
   selectedSizes: number[];
   sortBy: string;
   range: IRangeSlider;
@@ -80,7 +79,6 @@ const initialAppState: IAppState = {
   search: "",
   selectedProduct: "",
   selectedCategories: [],
-  priceRange: [0, 0], //Todo: should be taken from appConfig
   selectedSizes: [], //Todo: should be taken from appConfig
   sortBy: sortByList[0].value, //Todo: should be taken form appConfig
   range: {

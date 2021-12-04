@@ -9,7 +9,7 @@ const MultiRangeSliderWrapper = styled.div`
   }
   display: flex;
   position: relative;
-  padding: 50px 10px 40px;
+  padding: 15px 10px 40px;
   flex-direction: column;
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */

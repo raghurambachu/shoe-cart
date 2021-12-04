@@ -3,8 +3,10 @@ import { useContext } from "react";
 import { FaChevronUp } from "react-icons/fa";
 import { appConfig } from "../appConfig";
 import { AppContext } from "../context/AppContext";
+import { merchandiseData } from "../data";
 import Accordion from "./Accordion";
 import CheckboxGroup from "./CheckboxGroup";
+import HistogramChart from "./HistogramChart";
 import MultiRangeSlider from "./MultiRangeSlider";
 import SizeFilter from "./SizeFilter";
 
@@ -20,7 +22,15 @@ const AccordionContent = styled.div`
   border-bottom: 1px solid var(--section-border);
 `;
 
-const SidebarWrapper = styled.div``;
+const SidebarWrapper = styled.div`
+  height: 100%;
+  overflow-y: auto;
+  .histogram-container {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+  }
+`;
 
 const Categories = styled.div`
   .accordion-title {
@@ -46,7 +56,6 @@ const Sidebar = () => {
   const {
     range: { initial: initialRange, selected: selectedRange },
   } = appState;
-  console.log(appState);
 
   return (
     <SidebarWrapper>
@@ -92,6 +101,12 @@ const Sidebar = () => {
       </Categories>
       <PriceRangeWrapper>
         <h4 className="price-range-title">Price Range</h4>
+        <div className="histogram-container">
+          <HistogramChart
+            appState={appState}
+            merchandiseData={merchandiseData}
+          />
+        </div>
         <MultiRangeSlider
           min={initialRange[0]}
           max={initialRange[1]}
