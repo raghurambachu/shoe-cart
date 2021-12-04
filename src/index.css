@@ -6,6 +6,8 @@
   --base-red: #F67071;
   --base-grey: #c3c3c3;
   --hover-grey: 	#F5F5F5;
+  --slider-track: #efefef;
+  --slider-inner: #1c1c1c;
 }
 
 *, *:before, *:after {

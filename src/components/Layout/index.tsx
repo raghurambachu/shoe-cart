@@ -67,6 +67,15 @@ const Layout = () => {
         )
       : filteredAllProducts;
 
+    // Filter by Price range
+    filteredAllProducts = filteredAllProducts.filter((product) => {
+      const {
+        range: { selected },
+      } = appState;
+      const [priceMin, priceMax] = selected;
+      return product.price >= priceMin && product.price <= priceMax;
+    });
+
     // Filter by sizes
     filteredAllProducts = appState.selectedSizes.length
       ? filteredAllProducts.filter((product) =>
@@ -125,7 +134,9 @@ const Layout = () => {
         <ProductsToDisplay allProducts={allProducts} />
       </section>
       <aside className="right-sidebar">
-        {Object.keys(product || {}).length && <ProductInfo product={product} />}
+        {Object.keys(product || {}).length > 0 && (
+          <ProductInfo product={product} />
+        )}
       </aside>
     </LayoutWrapper>
   );

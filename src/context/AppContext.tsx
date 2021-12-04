@@ -41,16 +41,29 @@ type TSetProduct = {
   };
 };
 
+type TSetRange = {
+  type: "SET_SELECTED_RANGE";
+  payload: {
+    selectedRange: [number, number];
+  };
+};
+
 export type TAppReducerAction =
   | TSetTitle
   | TSetSortBy
   | TSetCategories
   | TSetSize
-  | TSetProduct;
+  | TSetProduct
+  | TSetRange;
 
 interface IAppContext {
   appState: IAppState;
   appDispatch: Dispatch<TAppReducerAction>;
+}
+
+interface IRangeSlider {
+  initial: [number, number];
+  selected: [number, number];
 }
 
 export interface IAppState {
@@ -60,6 +73,7 @@ export interface IAppState {
   priceRange: [number, number];
   selectedSizes: number[];
   sortBy: string;
+  range: IRangeSlider;
 }
 
 const initialAppState: IAppState = {
@@ -69,6 +83,10 @@ const initialAppState: IAppState = {
   priceRange: [0, 0], //Todo: should be taken from appConfig
   selectedSizes: [], //Todo: should be taken from appConfig
   sortBy: sortByList[0].value, //Todo: should be taken form appConfig
+  range: {
+    initial: [0, 1000], // determines min and max
+    selected: [0, 1000], // refers to user selected min and max value on sliding
+  },
 };
 
 function appReducer(state: IAppState, action: TAppReducerAction) {
@@ -101,6 +119,16 @@ function appReducer(state: IAppState, action: TAppReducerAction) {
       return {
         ...state,
         selectedProduct: action.payload.selectedProduct,
+      };
+    }
+    // In real time even the initial range should be set based on data from API
+    case "SET_SELECTED_RANGE": {
+      return {
+        ...state,
+        range: {
+          ...state.range,
+          selected: action.payload.selectedRange,
+        },
       };
     }
 

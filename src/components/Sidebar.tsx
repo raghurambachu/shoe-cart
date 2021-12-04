@@ -5,6 +5,7 @@ import { appConfig } from "../appConfig";
 import { AppContext } from "../context/AppContext";
 import Accordion from "./Accordion";
 import CheckboxGroup from "./CheckboxGroup";
+import MultiRangeSlider from "./MultiRangeSlider";
 import SizeFilter from "./SizeFilter";
 
 const {
@@ -30,8 +31,21 @@ const Categories = styled.div`
   }
 `;
 
+const PriceRangeWrapper = styled.div`
+  padding: 2rem ${sidebarPadding};
+  .price-range-title {
+    color: var(--base-font);
+    font-weight: 500;
+    font-size: 1.4rem;
+  }
+  border-bottom: 1px solid var(--section-border);
+`;
+
 const Sidebar = () => {
   const { appState, appDispatch } = useContext(AppContext);
+  const {
+    range: { initial: initialRange, selected: selectedRange },
+  } = appState;
   console.log(appState);
 
   return (
@@ -76,6 +90,24 @@ const Sidebar = () => {
           }}
         />
       </Categories>
+      <PriceRangeWrapper>
+        <h4 className="price-range-title">Price Range</h4>
+        <MultiRangeSlider
+          min={initialRange[0]}
+          max={initialRange[1]}
+          step={1} //Todo: to be taken from config
+          minimumValue={selectedRange[0]}
+          maximumValue={selectedRange[1]}
+          onChange={({ min, max, minValue, maxValue }) => {
+            appDispatch({
+              type: "SET_SELECTED_RANGE",
+              payload: {
+                selectedRange: [minValue, maxValue],
+              },
+            });
+          }}
+        />
+      </PriceRangeWrapper>
       <SizeFilter
         appState={appState}
         availableSizes={availableSizes}
