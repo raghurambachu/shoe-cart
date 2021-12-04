@@ -42,7 +42,6 @@ const ProductsToDisplay = ({ allProducts }: IProductsToDisplay) => {
     list: { sortBy: sortByList },
   } = appConfig;
 
-  // Todo: move to appConfig
   return (
     <ProductsToDisplayWrapper>
       <SectionNav className="flex-align-center">

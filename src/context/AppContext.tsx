@@ -79,8 +79,8 @@ const initialAppState: IAppState = {
   search: "",
   selectedProduct: "",
   selectedCategories: [],
-  selectedSizes: [], //Todo: should be taken from appConfig
-  sortBy: sortByList[0].value, //Todo: should be taken form appConfig
+  selectedSizes: [],
+  sortBy: sortByList[0].value,
   range: {
     initial: [0, 1000], // determines min and max
     selected: [0, 1000], // refers to user selected min and max value on sliding
