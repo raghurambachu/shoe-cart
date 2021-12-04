@@ -1,4 +1,6 @@
 import styled from "@emotion/styled";
+import { useContext } from "react";
+import { AppContext } from "../context/AppContext";
 import { IProduct } from "../interfaces";
 
 const ProductWrapper = styled.div`
@@ -73,10 +75,20 @@ interface IIndividualProduct {
 }
 
 const Product = ({ product }: IIndividualProduct) => {
-  const { feature, name, images, price } = product;
+  const { appDispatch } = useContext(AppContext);
+  const { feature, name, images, price, sku } = product;
   const [primaryImage, secondaryImage, tertiaryImage] = images;
   return (
-    <ProductWrapper>
+    <ProductWrapper
+      onClick={() => {
+        appDispatch({
+          type: "SET_PRODUCT",
+          payload: {
+            selectedProduct: sku,
+          },
+        });
+      }}
+    >
       <Band />
       <h5 className="product-feature">{feature}</h5>
       <h3 className="product-title">{name}</h3>

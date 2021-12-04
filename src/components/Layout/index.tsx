@@ -4,9 +4,10 @@ import ProductsToDisplay from "../ProductsToDisplay";
 import { merchandiseData } from "../../data";
 import { useContext, useEffect, useState } from "react";
 import { IProduct } from "../../interfaces";
-import { AppContext, IAppState } from "../../context/AppContext";
-import { appConfig } from "../../appConfig";
+import { AppContext } from "../../context/AppContext";
 import Sidebar from "../Sidebar";
+import ProductInfo from "../ProductInfo";
+import { filterProducts } from "../../utilities";
 
 const LayoutWrapper = styled.div`
   display: grid;
@@ -43,57 +44,33 @@ const LayoutWrapper = styled.div`
 
 const Layout = () => {
   const { appState } = useContext(AppContext);
-  const {
-    list: { sortBy: sortByList },
-  } = appConfig;
+
   const [allProducts, setAllProducts] = useState<IProduct[]>([]);
-
-  function filterProducts(allProducts: IProduct[], appState: IAppState) {
-    let filteredAllProducts: IProduct[];
-
-    // Search filter
-    filteredAllProducts = allProducts.filter((product) =>
-      product.name.toLowerCase().includes(appState.search.toLowerCase())
-    );
-
-    // Filter by category
-    filteredAllProducts = appState.selectedCategories.length
-      ? filteredAllProducts.filter((product) =>
-          product.category.some((cat) =>
-            appState.selectedCategories.includes(cat)
-          )
-        )
-      : filteredAllProducts;
-
-    // Filter by sizes
-    filteredAllProducts = appState.selectedSizes.length
-      ? filteredAllProducts.filter((product) =>
-          product.availableSizes.some((size) =>
-            appState.selectedSizes.includes(size)
-          )
-        )
-      : filteredAllProducts;
-
-    // Filter by sortBy(price and order -> only ascending)
-    filteredAllProducts = filteredAllProducts
-      .slice()
-      .sort((productA, productB) => {
-        if (appState.sortBy === sortByList[0].value)
-          return productA.price - productB.price;
-        if (appState.sortBy === sortByList[1].value)
-          return productA.name
-            .toLowerCase()
-            .localeCompare(productB.name.toLowerCase());
-        return 0;
-      });
-
-    return filteredAllProducts;
-  }
+  const [product, setProduct] = useState<IProduct>({} as IProduct);
 
   useEffect(() => {
     const filteredAllProducts = filterProducts(merchandiseData, appState);
     setAllProducts(filteredAllProducts);
   }, [appState]);
+
+  useEffect(() => {
+    // set product to be shown in right sidebar based on sku
+    // If no sku - that is user hasn't selected any product, show first product of filtered output
+    // If user selected and exists in filteredProducts - show the product
+    const productVal =
+      appState.selectedProduct &&
+      !!allProducts.find(
+        (productItem) => productItem.sku === appState.selectedProduct
+      )
+        ? (allProducts.find(
+            (productItem) => productItem.sku === appState.selectedProduct
+          ) as IProduct)
+        : allProducts.length
+        ? allProducts[0]
+        : ({} as IProduct);
+
+    setProduct(productVal);
+  }, [appState.selectedProduct, allProducts]);
 
   return (
     <LayoutWrapper>
@@ -106,7 +83,11 @@ const Layout = () => {
       <section className="scrollable">
         <ProductsToDisplay allProducts={allProducts} />
       </section>
-      <aside className="right-sidebar"></aside>
+      <aside className="right-sidebar">
+        {Object.keys(product || {}).length > 0 && (
+          <ProductInfo product={product} />
+        )}
+      </aside>
     </LayoutWrapper>
   );
 };

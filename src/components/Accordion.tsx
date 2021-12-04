@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { appConfig } from "../appConfig";
 
 const {
@@ -22,9 +22,6 @@ const AccordionSection = styled.div`
     color: var(--base-font);
     font-size: 1.4rem;
   }
-  .accordion:hover {
-    background-color: var(--hover-grey);
-  }
   .accordion-icon {
     margin-left: auto;
     transition: transform 0.6s ease;
@@ -39,6 +36,7 @@ const AccordionSection = styled.div`
 `;
 
 interface IAccordion {
+  isOpen?: true;
   renderHeader: (
     setActive: string,
     setRotate: string,
@@ -49,17 +47,35 @@ interface IAccordion {
   renderContent: () => React.ReactNode;
 }
 
-const Accordion = ({ renderHeader, renderContent }: IAccordion) => {
+const Accordion = ({
+  renderHeader,
+  renderContent,
+  isOpen = true,
+}: IAccordion) => {
   const [setActive, setActiveState] = useState("");
   const [setHeight, setHeightState] = useState("0px");
   const [setRotate, setRotateState] = useState("accordion-icon");
 
   const content = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    if (isOpen) {
+      setHeightState(`${content?.current?.scrollHeight}px`);
+    }
+  }, []);
+
   function toggleAccordion() {
     setActiveState(setActive === "" ? "active" : "");
+    const modifiedHeightState = isOpen
+      ? setActive === "active"
+        ? `${content?.current?.scrollHeight}px`
+        : "0px"
+      : setActive === "active"
+      ? "0px"
+      : `${content?.current?.scrollHeight}px`;
     setHeightState(
-      setActive === "active" ? "0px" : `${content?.current?.scrollHeight}px`
+      modifiedHeightState
+      //   setActive === "active" ? "0px" : `${content?.current?.scrollHeight}px`
     );
     setRotateState(
       setActive === "active" ? "accordion-icon" : "accordion-icon rotate"

@@ -30,3 +30,11 @@ export interface IOption {
   label: string;
   value: string;
 }
+
+export interface ICollectCountOfProductsForEachDataPointFunc {
+  min: number;
+  max: number;
+  xUnit?: number;
+  merchandiseData: IProduct[];
+  selectedRange: number[];
+}
