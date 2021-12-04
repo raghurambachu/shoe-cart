@@ -14,6 +14,7 @@ const {
   uiConfigs: { sidebarPadding },
   list: { categories },
   availableSizes,
+  rangeSliderStep,
 } = appConfig;
 
 const AccordionContent = styled.div`
@@ -110,7 +111,7 @@ const Sidebar = () => {
         <MultiRangeSlider
           min={initialRange[0]}
           max={initialRange[1]}
-          step={1} //Todo: to be taken from config
+          step={rangeSliderStep}
           minimumValue={selectedRange[0]}
           maximumValue={selectedRange[1]}
           onChange={({ min, max, minValue, maxValue }) => {

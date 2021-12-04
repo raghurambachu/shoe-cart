@@ -1,11 +1,7 @@
 import styled from "@emotion/styled";
 import { useContext } from "react";
 import { appConfig } from "../appConfig";
-import {
-  AppContext,
-  IAppState,
-  TAppReducerAction,
-} from "../context/AppContext";
+import { AppContext } from "../context/AppContext";
 import { IProduct } from "../interfaces";
 import Product from "./Product";
 import SortDropdown from "./SortDropdown";
@@ -42,7 +38,6 @@ const ProductsToDisplay = ({ allProducts }: IProductsToDisplay) => {
     list: { sortBy: sortByList },
   } = appConfig;
 
-  // Todo: move to appConfig
   return (
     <ProductsToDisplayWrapper>
       <SectionNav className="flex-align-center">
